@@ -19,8 +19,8 @@ This project provides a simple HTML form with client-side validation using jQuer
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/yourusername/your-repository-name.git
-    cd your-repository-name
+    [it clone https://github.com/yourusername/your-repository-name.git
+    cd your-repository-name](https://github.com/Abhishek3861/Login-Page-.git)
     ```
 
 2. **Open `index.html` in a Browser**
