@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <script src="Jquery.js"></script>
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 130%;
+            }
+            #wrap{
+                width: 500px;
+                margin: 0 auto;
+            }
+            label{
+                width: 250px;
+                float: left;
+                position: relative;
+                top: 12px;
+            }
+            input{
+                width: 350px;
+                font-size: 25px;
+                border: 1px solid black;
+                border-radius: 7px;
+                margin-top: 10px;
+
+            }
+            #Submit{
+                width: 150px;
+                margin-left: 250px;
+            }
+            #error-message{
+                color: red;
+                background-color: wheat;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="wrap">
+            <div class="x1">
+                <label for="email">Enter Your Email: </label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="x1">
+                <label for="phone_no">Phone no: </label>
+                <input type="text" name="phone_no" id="phone_no">
+            </div>
+            <div class="x1">
+                <label for="password">Enter Your Password:</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div class="x1">
+                <label for="confirm_password">Confirm Password: </label>
+                <input type="password" name="confirm_password" id="confirm_password">
+            </div>
+            <input id="submit" type="submit" value="Submit">
+            <div id="error-message" style="color: red;"></div>
+        </div>
+        <script>
+            var errormessage = "";
+            var missingfield = "";
+
+            function isEmail(email) {
+                var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                return validRegex.test(email);
+            }
+
+            $("#submit").click(function(event1){
+                event1.preventDefault();
+                missingfield = "";
+
+                if ($("#email").val() == ""){
+                    missingfield += "<p>Email is missing</p>";
+                }
+                if ($("#phone_no").val() == ""){
+                    missingfield += "<p>Phone no. is missing</p>";
+                }
+                if ($("#password").val() == ""){
+                    missingfield += "<p>Password is missing</p>";
+                }
+                if ($("#confirm_password").val() == ""){
+                    missingfield += "<p>Confirm Password is missing</p>";
+                }
+            })
+                $("#submit").click(function(event){
+                event.preventDefault(); // Prevent form submission
+                errormessage = ""; // Clear previous error messages
+
+                if (!isEmail($("#email").val())) {
+                    errormessage += "<p>This is an invalid email</p>";
+                }
+                if (!$.isNumeric($("#phone_no").val())) {
+                    errormessage += "<p>This is an invalid phone number</p>";
+                }
+                if ($("#password").val() != $("#confirm_password").val()) {
+                    errormessage += "<p>Passwords do not match</p>";
+                }
+                // Display error message if there is one
+                if (errormessage !== "") {
+                    $("#error-message").html(errormessage);
+                } else {
+                    alert("Form submitted successfully!");
+                }
+            });
+        </script>
+    </body>
+
+</html>
